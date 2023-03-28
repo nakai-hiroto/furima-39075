@@ -91,15 +91,15 @@ has_one :address
 
 ## addresses
 
-| Column            | Type        | Options                        | 
-| ----------------- | ----------- | ------------------------------ | 
-| post_code         | string      | null:false                     | 
-| living_prefecture | text        | null:false                     | 
-| city              | string      | null:false                     | 
-| street_address    | string      | null:false                     | 
-| building_name     | string      |                                | 
-| phone_number      | string      | null:false                     | 
-| purchase          | references  | null: false, foreign_key: true |
+| Column               | Type        | Options                        | 
+| -------------------- | ----------- | ------------------------------ | 
+| post_code_id         | integer     | null:false                     | 
+| living_prefecture_id | integer     | null:false                     | 
+| city                 | string      | null:false                     | 
+| street_address       | string      | null:false                     | 
+| building_name        | string      |                                | 
+| phone_number         | string      | null:false                     | 
+| purchase             | references  | null: false, foreign_key: true |
 
 ### Association
 belongs_to :purchase
