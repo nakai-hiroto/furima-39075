@@ -64,8 +64,8 @@ has_many :purchases
 
 
 ### Association
-belongs_to :purchase
 belongs_to :user
+has_one :purchases
 
 
 
@@ -76,8 +76,7 @@ belongs_to :user
 
 | Column     | Type       | Options                        | 
 | ---------- | ---------- | ------------------------------ | 
-| item       | references | null: false, foreign_key: true | 
-| address    | references | null: false, foreign_key: true | 
+| item       | references | null: false, foreign_key: true |  
 | user       | references | null: false, foreign_key: true | 
 
 
@@ -94,7 +93,7 @@ has_one :address
 
 | Column            | Type        | Options                        | 
 | ----------------- | ----------- | ------------------------------ | 
-| post_code         | integer     |                     null:false | 
+| post_code         | string      | null:false                     | 
 | living_prefecture | text        | null:false                     | 
 | city              | string      | null:false                     | 
 | street_address    | string      | null:false                     | 
