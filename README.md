@@ -77,7 +77,7 @@ belongs_to :user
 | Column     | Type       | Options                        | 
 | ---------- | ---------- | ------------------------------ | 
 | item       | references | null: false, foreign_key: true | 
-| purchase   | references | null: false, foreign_key: true | 
+| address    | references | null: false, foreign_key: true | 
 | user       | references | null: false, foreign_key: true | 
 
 
