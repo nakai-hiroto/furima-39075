@@ -99,9 +99,7 @@ has_one :address
 | street_address    | string      | null:false                     | 
 | building_name     | string      |                                | 
 | phone_number      | string      | null:false                     | 
-| user              | references  | null: false, foreign_key: true |
-| item              | references  | null: false, foreign_key: true |
-
+| purchase          | references  | null: false, foreign_key: true |
 
 ### Association
 belongs_to :purchase
