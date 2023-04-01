@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
 
   validates :image, :item_name, :production, presence: true
-  validates :price,                  presence: true
+  validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}, presence: true
 
   #ジャンルの選択が「---」の時は保存できないようにする
   validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
