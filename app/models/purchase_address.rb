@@ -1,6 +1,6 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number, :purchase_id, :item_id, :user_id
+  attr_accessor :post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number, :purchase_id, :item_id, :user_id, :token
 
   # ここにバリデーションの処理を書く
   with_options presence: true do
@@ -11,6 +11,7 @@ class PurchaseAddress
   validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'Input only number' }
   validates :user_id
   validates :item_id
+  validates :token
   end
 
 
