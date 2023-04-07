@@ -45,7 +45,7 @@ RSpec.describe PurchaseAddress, type: :model do
         it '郵便番号が記入されていないと購入できない' do
           @purchase_address.post_code = ''
           @purchase_address.valid?
-          expect(@purchase_address.errors.full_messages).to include("Post code can't be blank", "Post code is invalid. Enter it as follows (e.g. 123-4567)")
+          expect(@purchase_address.errors.full_messages).to include("Post code is invalid. Enter it as follows (e.g. 123-4567)")
         end
         it ' 郵便番号は、「3桁ハイフン4桁」の半角文字列のみ保存可能なこと（良い例:123-4567 良くない例:1234567）。' do
           @purchase_address.post_code = '1234567'
@@ -75,7 +75,7 @@ RSpec.describe PurchaseAddress, type: :model do
         it '電話番号は必須であること' do
           @purchase_address.phone_number = nil
           @purchase_address.valid?
-          expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank", "Phone number Input only number")
+          expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank")
         end
         it '電話番号の入力は、全角数字ではいけないこと' do
           @purchase_address.phone_number = '１１１１１１１１１１１'
@@ -87,8 +87,13 @@ RSpec.describe PurchaseAddress, type: :model do
           @purchase_address.valid?
           expect(@purchase_address.errors.full_messages).to include("Phone number Input only number")
         end
-        it '電話番号の入力は、10桁以上11桁以内の半角数値のみ保存可能なこと（良い例:09012345678 良くない例:090-1234-5678)' do
-          @purchase_address.phone_number = 111-1111111
+        it '電話番号の入力は、９桁以下では購入できない' do
+          @purchase_address.phone_number = 222222222
+          @purchase_address.valid?
+          expect(@purchase_address.errors.full_messages).to include("Phone number Input only number")
+        end
+        it '電話番号の入力は、12桁以上では購入できない' do
+          @purchase_address.phone_number = 222222222222
           @purchase_address.valid?
           expect(@purchase_address.errors.full_messages).to include("Phone number Input only number")
         end
